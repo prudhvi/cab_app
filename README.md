@@ -1,8 +1,6 @@
+a)Required: Ruby (1.9.3), bundler, mongodb ( Mac OSX)
 
-
-Required: Ruby (1.9.3), bundler, mongodb ( Mac OSX)
-
-Prerequisites:
+b)Prerequisites:
 1)Start `mongod` locally
 2)Go inside app directory and run
        `bundle install`
@@ -10,6 +8,6 @@ Prerequisites:
 
 
 
-Running the app locally:
+c)Running the app locally:
 
-bundle exec rackup config.ru -p 4567
+`bundle exec rackup config.ru -p 4567`
