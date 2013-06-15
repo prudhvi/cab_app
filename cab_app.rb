@@ -15,8 +15,9 @@ configure do
 end
 
 
-
-#curl -i -H "Accept: application/json" -X PUT -d "latitude=90&longitude=123" http://0.0.0.0:4567/cabs/1
+get '/' do
+  "Hello User!"
+end
 
 #1 Create/Update cab
 put '/cabs/:id' do
@@ -35,7 +36,6 @@ put '/cabs/:id' do
 end
 
 #2 Get a cab info
-
 get '/cabs/:id' do
   content_type :json
   cab_doc = settings.mongo_db['cabs'].find_one({_id: params[:id]})
@@ -48,7 +48,6 @@ end
 
 
 #3 Query
-
 get '/cabs' do
   content_type :json
 
@@ -76,14 +75,12 @@ get '/cabs' do
 end
 
 #4 Destroy a cab
-
 delete '/cabs/:id' do
   settings.mongo_db['cabs'].remove({_id: params[:id]})
   status 200
 end
 
 #5 Destroy all cabs
-
 delete '/cabs/' do
   settings.mongo_db['cabs'].remove()
   status 200
