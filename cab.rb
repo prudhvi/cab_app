@@ -8,8 +8,8 @@ class Cab
   def to_hash
     {
       "id" => @id,
-      "longitude" => @longitude,
-      "latitude" => @latitude
+      "latitude" => @latitude,
+      "longitude" => @longitude
     }
   end
 end

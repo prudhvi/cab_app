@@ -50,30 +50,27 @@ end
 get '/cabs' do
   content_type :json
 
-  latitude = params[:latitude].to_f
-  longitude = params[:longitude].to_f
-  limit = params[:limit].to_i
-  radius = params[:radius].to_i
+  limit = params[:limit]? params[:limit].to_i : 8
 
   results = settings.mongo_db.command({
     geoNear: 'cabs',
     near: {
       type: "Point",
-      coordinates: [longitude, latitude]
+      coordinates: [params[:longitude].to_f, params[:latitude].to_f]
     },
-    maxDistance: radius,
+    maxDistance: params[:radius].to_f,
     num: limit,
     spherical: true
   })
 
-  all =[]
+  nearest_cabs =[]
   cab_documents = results["results"].map {|h| h.fetch("obj")}
 
   cab_documents.each do |cab_doc|
-    all << Cab.new(cab_doc).to_hash
+    nearest_cabs << Cab.new(cab_doc).to_hash
   end
 
-  all.to_json
+  nearest_cabs.to_json
 end
 
 #4 Destroy a cab
