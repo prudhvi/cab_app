@@ -1,3 +1,4 @@
+# Wrapper for Cab document.
 class Cab
   def initialize(cab_doc)
     @id = cab_doc["_id"]
