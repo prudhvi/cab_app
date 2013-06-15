@@ -7,7 +7,6 @@ b)Prerequisites:
    This will install all the required gems(ie; Gems mentioned in Gemfile)
 
 
-
 c)Running the app locally:
 
 `bundle exec rackup config.ru -p 4567`
