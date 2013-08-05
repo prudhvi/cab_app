@@ -1,0 +1,10 @@
+%h1= @title
+%form#cab-form{ :action=> '/cabs/create', :method => 'post', :enctype => 'multipart/form-data' }
+  %input{:type => 'hidden', :name => '_method', :value => 'put'}
+  %label CabId:
+  %input#cab_id{:type => 'text', :name =>'id'}
+  %label Latitude:
+  %input#latitude{:type => 'text', :name => 'latitude'}
+  %label Longitude:
+  %input#longitude{:type => 'text', :name =>'longitude'}
+  %input{ :type => "submit" }

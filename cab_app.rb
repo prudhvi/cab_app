@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'mongo'
+require 'haml'
 require 'json/ext'
 require './cab'
 
@@ -16,11 +17,20 @@ end
 
 
 get '/' do
-  "Hello User!"
+  haml :index
+end
+
+get '/cabs/new/' do
+  @title = 'Add a new cab'
+  haml :new
+end
+
+get '/cabs/show/' do
+  haml :show
 end
 
 #1 Create/Update cab
-put '/cabs/:id' do
+put '/cabs/create' do
   cab_id = params[:id]
   cab = settings.mongo_db['cabs'].save({
     _id: cab_id,
@@ -31,8 +41,12 @@ put '/cabs/:id' do
   })
 
   if cab
+    @message = 'Cab is saved'
     status 200
+  else
+    @message = "Cab isn't saved"
   end
+  haml :create
 end
 
 #2 Get a cab info

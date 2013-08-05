@@ -1,0 +1,53 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %title Sticky Footer Navbar Template for Bootstrap
+    / Bootstrap core CSS
+    %link{:href => "/stylesheets/bootstrap.css", :rel => "stylesheet"}/
+    / Custom styles for this template
+
+  %body
+    / Wrap all page content here
+    #wrap
+      / Fixed navbar
+      .navbar.navbar-fixed-top
+        .container
+          %button.navbar-toggle{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "/"} CabApp
+          .nav-collapse.collapse
+            %ul.nav.navbar-nav
+              %li.active
+                %a{:href => "#"} Home
+              %li
+                %a{:href => "/cabs/new/"} Create/Update
+              %li
+                %a{:href => "/cabs/show/"} Show
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                  Dropdown
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "#"} Action
+                  %li
+                    %a{:href => "#"} Another action
+                  %li
+                    %a{:href => "#"} Something else here
+                  %li.divider
+                  %li.nav-header Nav header
+                  %li
+                    %a{:href => "#"} Separated link
+                  %li
+                    %a{:href => "#"} One more separated link
+          / /.nav-collapse
+      / Begin page content
+      .container
+        .page-header
+        = yield
