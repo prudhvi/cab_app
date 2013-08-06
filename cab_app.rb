@@ -26,6 +26,7 @@ get '/cabs/new/' do
 end
 
 get '/cabs/show/' do
+  @cab_list = settings.mongo_db['cabs'].find().map{|cab| Cab.new(cab)}
   haml :show
 end
 

@@ -1,5 +1,8 @@
 # Wrapper for Cab document.
 class Cab
+
+  attr_reader :id, :latitude, :longitude
+
   def initialize(cab_doc)
     @id = cab_doc["_id"]
     @longitude = cab_doc["location"]["coordinates"].first
