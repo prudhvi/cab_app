@@ -26,7 +26,13 @@ get '/cabs/new/' do
 end
 
 get '/cabs/show/' do
-  @cab_list = settings.mongo_db['cabs'].find().map{|cab| Cab.new(cab)}
+  cab_list = settings.mongo_db['cabs'].find().map{|cab| Cab.new(cab)}
+  cab_icon = 'http://icons.iconarchive.com/icons/cemagraphics/classic-cars/16/yellow-pickup-icon.png'
+  markers  = "|" + cab_list.map{|c| [c.latitude,c.longitude].join(',')}.join('|') + "|"
+
+  @google_maps_url = "http://maps.googleapis.com/maps/api/staticmap?size=600x600&zoom=1&maptype=roadmap&sensor=false&markers=icon:#{cab_icon}"
+  @google_maps_url += URI.encode(markers)
+
   haml :show
 end
 

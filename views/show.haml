@@ -1,11 +1,1 @@
-%table
-  %thead
-    %th= 'CabId'
-    %th= 'Latitude'
-    %th= 'Longitude'
-  %tbody
-    - @cab_list.each do|cab|
-      %tr
-        %td= cab.id
-        %td= cab.latitude
-        %td= cab.longitude
+%img(src=@google_maps_url)
