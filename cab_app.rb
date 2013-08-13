@@ -101,10 +101,5 @@ delete '/cabs/:id' do
   status 200
 end
 
-#5 Destroy all cabs
-delete '/cabs/' do
-  settings.mongo_db['cabs'].remove()
-  status 200
-end
 
 
